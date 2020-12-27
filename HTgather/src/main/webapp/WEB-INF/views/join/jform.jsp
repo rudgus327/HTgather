@@ -16,7 +16,7 @@
 		<div class="container">
 			<div class="form_txtInput">
 				<h2 class="sub_tit_txt">회원가입</h2>
-				<p class="exTxt">회원가입시 이름은 별명으로 입력하셔도 됩니다.</p>
+				<p class="exTxt">회원가입 시, 이름은 별명으로 입력하셔도 됩니다.</p>
 				<!-- 바꾸기 -->
 				<div class="join_form">
 					<table>
