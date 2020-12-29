@@ -22,7 +22,7 @@
 	<nav>
 		<ul>
 			<li><a href="#">로그인</a></li>
-			<li><a href="${root}/join/jform">회원가입</a></li>
+			<li><a href="${root}/jform">회원가입</a></li>
 		</ul>
 	</nav>
 	<div class="pTitle">

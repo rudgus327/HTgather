@@ -10,14 +10,15 @@ public class joinDAO {
 	@Autowired
 	private SqlSession sqlsession;
 	
-	public int idCheck(String id) {
-		int idCnt = sqlsession.selectOne("JoinMapper.idCheck", id);
-		return idCnt;
-	}//idCheck : 중복체크
+	public int idChk(String mbr_id) {
+		int idCount = sqlsession.selectOne("JoinMapper.idChk", mbr_id);
+		return idCount;
+	}//idCheck : 아이디 중복체크
 
-	public int formSubmit(MbrDTO inDto) {
-		int insertCnt = sqlsession.insert("JoinMapper.formSubmit", inDto);
-		return insertCnt;
-	}//formSubmit : 회원가입
+	public int register(MbrDTO inDto) {
+		int successCnt 
+			= sqlsession.insert("JoinMapper.register", inDto);
+		return successCnt;
+	}//register : 회원가입
 	
 }//class

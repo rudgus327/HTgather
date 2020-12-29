@@ -1,39 +1,75 @@
 package kr.co.htgather.join;
 
 public class MbrDTO {
-	private String id; 
-	private String pwd; 
-	private String name; 
-	private String gender; 
+	private String mbr_id; 
+	private String mbr_pwd; 
+	private String mbr_name; 
+	private String mb_gen; 
 	private String email; 
-	private String address; 
-	private String tel; 
-	private String profile; 
+	private String email1; 
+	private String email2;
+	private String tel;
+	private String tel1; 
+	private String tel2; 
+	private String tel3;
+	private String mbr_pic; 
 	private String weight; 
-	private String height;
-	public String getId() {
-		return id;
+	private String height; 
+	private String joinDate;
+	
+	public String getEmail1() {
+		return email1;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setEmail1(String email1) {
+		this.email1 = email1;
 	}
-	public String getPwd() {
-		return pwd;
+	public String getEmail2() {
+		return email2;
 	}
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
+	public void setEmail2(String email2) {
+		this.email2 = email2;
 	}
-	public String getName() {
-		return name;
+	public String getTel1() {
+		return tel1;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setTel1(String tel1) {
+		this.tel1 = tel1;
 	}
-	public String getGender() {
-		return gender;
+	public String getTel2() {
+		return tel2;
 	}
-	public void setGender(String gender) {
-		this.gender = gender;
+	public void setTel2(String tel2) {
+		this.tel2 = tel2;
+	}
+	public String getTel3() {
+		return tel3;
+	}
+	public void setTel3(String tel3) {
+		this.tel3 = tel3;
+	}
+	public String getMbr_id() {
+		return mbr_id;
+	}
+	public void setMbr_id(String mbr_id) {
+		this.mbr_id = mbr_id;
+	}
+	public String getMbr_pwd() {
+		return mbr_pwd;
+	}
+	public void setMbr_pwd(String mbr_pwd) {
+		this.mbr_pwd = mbr_pwd;
+	}
+	public String getMbr_name() {
+		return mbr_name;
+	}
+	public void setMbr_name(String mbr_name) {
+		this.mbr_name = mbr_name;
+	}
+	public String getMb_gen() {
+		return mb_gen;
+	}
+	public void setMb_gen(String mb_gen) {
+		this.mb_gen = mb_gen;
 	}
 	public String getEmail() {
 		return email;
@@ -41,23 +77,17 @@ public class MbrDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
 	public String getTel() {
 		return tel;
 	}
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
-	public String getProfile() {
-		return profile;
+	public String getMbr_pic() {
+		return mbr_pic;
 	}
-	public void setProfile(String profile) {
-		this.profile = profile;
+	public void setMbr_pic(String mbr_pic) {
+		this.mbr_pic = mbr_pic;
 	}
 	public String getWeight() {
 		return weight;
@@ -71,4 +101,12 @@ public class MbrDTO {
 	public void setHeight(String height) {
 		this.height = height;
 	}
+	public String getJoinDate() {
+		return joinDate;
+	}
+	public void setJoinDate(String joinDate) {
+		this.joinDate = joinDate;
+	}
+	
+	
 }

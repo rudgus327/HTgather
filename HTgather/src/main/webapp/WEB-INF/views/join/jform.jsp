@@ -21,44 +21,47 @@
 		var ck = 0; //아이디 중복 체크 변수
 		
 		$("#btn_idChk").click(function() {
-			if ($.trim( $("#id").val()) == "") {
+			if ($.trim( $("#mbr_id").val()) == "") {
 				alert("아이디를 입력해주세요.");
 				return false;
 			}// 아이디 적지 않고 중복체크 버튼 누름
 			$.get(
 				"./idChk"
-				,{id:$("#id").val()}
+				,{mbr_id:$("#mbr_id").val()}
 				,function(data,status){
-					if (data == 0) {
-						$("#id_desc").text("사용 가능한 아이디입니다.");
-						$("#id_desc").css({
-							padding:"12px 0 19px 0",
-						 	"text-align": "right",
-						  	color: "#9a9a9a",
-						  	"font-size": "13px",
-						 	"border-bottom": "1px solid #ececec"
-						});
-						$("#id_desc").focus();
-						ck = 1;
-					}else {
-						$("#id_desc").text("이미 사용 중인 아이디 입니다.");
-						$("#id_desc").css({
-							padding:"12px 0 19px 0",
-						 	"text-align": "right",
-						  	color: "red",
-						  	"font-size": "13px",
-						 	"border-bottom": "1px solid #ececec"
-						});
-						$("#id_desc").focus();
-					}
+					if (status == "success")
+						if (data == 0) {
+							$("#id_desc").text("사용 가능한 아이디입니다.");
+							$("#id_desc").css({
+								padding:"12px 0 19px 0",
+							 	"text-align": "right",
+							  	color: "#9a9a9a",
+							  	"font-size": "13px",
+							 	"border-bottom": "1px solid #ececec"
+							});
+							$("#id_desc").focus();
+							ck = 1;
+						}else {
+							$("#id_desc").text("사용 중인 아이디 입니다.");
+							$("#id_desc").css({
+								padding:"12px 0 19px 0",
+							 	"text-align": "right",
+							  	color: "red",
+							  	"font-size": "13px",
+							 	"border-bottom": "1px solid #ececec"
+							});
+							$("#id_desc").focus();
+						}
 				}//function
 			);//get : 아이디 중복체크
 		});//click : btn_idChk
 		
-		$("#id").keydown(function() {
+		////////////////////////////////////////////////////////
+		//중복 체크 후 다시 아이디 변경 할 때
+		$("#mbr_id").keydown(function() {
 			ck = 0;
 		});//keydown
-		$(".id").keyup(function() {
+		$(".mbr_id").keyup(function() {
 			let tmpElement = event.target;
 			let tmpValue = tmpElement.value;
 			tmpElement.value
@@ -70,23 +73,25 @@
 			tmpElement.value = tmpValue.replace(/[^ 0-9\.]/g,'');
 		});//keyup: 키 입력 후 발생 이벤트 : 숫자만 입력가능
 		
+		////////////////////////////////////////////////////////
+		
 		$("#btn_join").click(function() {
-			if($.trim( $("#id").val() ) == ""){
+			if($.trim( $("#mbr_id").val() ) == ""){
 				alert("아이디를 입력해 주세요.");
 				return;
 			}
-			if($.trim( $("#pwd").val() ) == ""){
+			if($.trim( $("#mbr_pwd").val() ) == ""){
 				alert("비밀번호를 입력해 주세요");
 				return;
 			}
-			if($.trim( $("#pwdre").val() ) == ""){
+			if($.trim( $("#mbr_pwdre").val() ) == ""){
 				alert("비밀번호 확인을 입력해주세요.");
 				return;
 			}
-			if ($("#pwd").val() != $("#pwdre").val() ) {
+			if ($("#mbr_pwd").val() != $("#mbr_pwdre").val() ) {
 				alert("비밀번호와 비밀번호 확인이 서로 다릅니다.\n 비밀번호를 확인해 주세요.");
 			}
-			if ($.trim( $("#name").val() ) == "") {
+			if ($.trim( $("#mbr_name").val() ) == "") {
 				alert("이름을 입력해주세요.");
 				return;
 			}
@@ -105,34 +110,32 @@
 				return false;
 			}
 		
-		$.ajax({
-			type:"POST"
-			,url:"./join"
-			,dataType:"JSON"
-			,data: {id:$("#id").val()
-				,pwd:$("#pwd").val()
-				,name:$("#name").val()
-				,gender:$('input:radio[name=mb_gen]:checked').val()
-				,email:email
-				,tel:tel
-				,weight:$("#weh").val()
-				,height:$("#hei").val()
-				}
-			,success : function(data) {
-				if (data == "1") {
-					alert("회원가입을 축하드립니다.");
-					location.href = "${root}/";//회원가입 성공시 홈화면으로 돌아감
-				}else if (data == "-1") {
-					alert("회원가입을 다시 시도해 주세요.")
-				}
-			}//success
-			,error: function(xhr, status, error) {
-			}//error
-			
-		});//ajax	
-		});
-			
-	});//click
+			$.ajax({
+				type:"POST"
+				, url:"./register"
+				, dataType:"JSON"
+				, data : {mbr_id : $("#mbr_id").val()
+					,mbr_pwd:$("#mbr_pwd").val()
+					,mbr_name:$("#mbr_name").val()
+					,mb_gen : $('input:radio[name=mb_gen]:checked').val()
+					,tel1 : $("#tel1").val(), tel2 : $("#tel2").val(), tel3 : $("#tel3").val()
+					,email1 : $("#email1").val(), email2 : $("#email2").val()
+					,weight:$("#weight").val()
+					,height:$("#height").val()}
+				,success : function(data) {
+					if (data == "1") {
+						alert("회원가입을 축하드립니다.");
+						location.href = "${root}/";//회원가입 성공시 홈화면으로 돌아감
+					}else if (data == "-1") {
+						alert("회원가입을 다시 시도해 주세요.")
+					}
+				}//success
+				,error: function(xhr, status, error) {
+				}//error
+				
+			});//ajax	
+		});//btn_join
+	});//ready
 </script>
 <body>
 	<div class="wrap wd668">
@@ -150,7 +153,7 @@
 						<tbody>
 							<tr>
 								<th><span class="essential">아이디</span><span id="id_desc"></span></th>
-								<td><input class="id" id="id" type="text" placeholder="ID 를 입력하세요.">
+								<td><input class="mbr_id" id="mbr_id" type="text" placeholder="ID 를 입력하세요.">
 								<div class="btn_idChk" id= "btn_idChk">
 								<a href="#">중복확인</a>
 								</div>
@@ -159,15 +162,15 @@
 							</tr>
 							<tr>
 								<th><span class="essential">비밀번호</span></th>
-								<td><input id="pwd" type="text" placeholder="비밀번호를 입력해주세요."></td>
+								<td><input id="mbr_pwd" type="text" placeholder="비밀번호를 입력해주세요."></td>
 							</tr>
 							<tr>
 								<th><span class="essential">비밀번호 확인</span></th>
-								<td><input id="pwdre" type="text" placeholder="비밀번호를 확인하세요"></td>
+								<td><input id="mbr_pwdre" type="text" placeholder="비밀번호를 확인하세요"></td>
 							</tr>
 							<tr>
 								<th><span class="essential">이름</span></th>
-								<td><input id="name" type="text" placeholder=""></td>
+								<td><input id="mbr_name" type="text" placeholder=""></td>
 							</tr>
 							<tr>
 								<th><span>성별</span></th>
@@ -206,14 +209,14 @@
 							<tr>
 								<th><span>체중 (단위: kg )</span></th>
 								<td>
-								<input type="text" class="weh" id="weh" name="weh"> 
+								<input type="text" class="weh" id="weight" name="weh"> 
 								<span class="mar10">kg</span>
 								</td>
 							</tr>
 							<tr>
 								<th><span>신장 (단위: cm )</span></th>
 								<td>
-								<input type="text" class="weh" id="hei" name="hei"> 
+								<input type="text" class="weh" id="height" name="hei"> 
 								<span class="mar10">cm</span>
 								</td>
 							</tr>
@@ -233,7 +236,7 @@
 									수신동의</label>
 							</div>
 						</div>-->
-				<button class="btn_wrap" id= "btn_join">
+				<button type="button" class="btn_wrap" id= "btn_join">
 					회원가입
 				</button>
 			</div>
