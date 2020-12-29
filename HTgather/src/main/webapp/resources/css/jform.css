@@ -92,24 +92,17 @@ ul {
   margin: 0 0 25px;
 }
 .btn_wrap {
-  text-align: center;
-  margin: 40px 0 30px;
-}
-.btn_wrap a {
-  color: #fff;
-  background-color: #4380ce;
-  font-weight: bold;
-  padding: 10px;
-  height: 30px;
-  line-height: 30px;
-  width: 168px;
-  display: block;
-  text-align: center;
-  margin: 0 auto;
-}
-.btn_wrap a.wide {
-  width: 587px;
-  margin: 0 0 0 20px;
+    text-align: center;
+    
+    color: #fff;
+    background-color: #4380ce;
+    font-weight: bold;
+    height: 50px;
+    line-height: 30px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 200px;
 }
 .find_txt ul li {
   color: #9a9a9a;
@@ -201,6 +194,11 @@ ul {
   padding: 10px;
   width: 100%;
   float: left;
+}
+.join_form table input.id {
+  width: 200px;
+  display: inline-block;
+  margin-right: 10px;
 }
 .join_form table input.email {
   width: 170px;
@@ -381,6 +379,34 @@ ul {
     margin: 0;
   }
   .btn_wrap {
+    overflow: hidden;
+  }
+  .btn_idChk {
+  text-align: center;
+  margin: 40px 0 30px;
+}
+.btn_idChk a {
+  color: #fff;
+  background-color: #4380ce;
+  font-weight: bold;
+  padding: 10px;
+  height: 30px;
+  line-height: 30px;
+  width: 168px;
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+}
+.btn_idChk a.wide {
+  width: 587px;
+  margin: 0 0 0 20px;
+}
+  .btn_idChk a,
+  .btn_idChk a.wide {
+    width: auto;
+    margin: 0;
+  }
+  .btn_idChk {
     overflow: hidden;
   }
   .join_form.idpwFind table td select {

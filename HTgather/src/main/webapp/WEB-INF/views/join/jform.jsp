@@ -7,10 +7,133 @@
 <head>
 <meta charset="UTF-8">
 <title>join</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/jform.css">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
 </head>
+<script type="text/javascript">
+	$(document).ready(function() {
+		var ck = 0; //아이디 중복 체크 변수
+		
+		$("#btn_idChk").click(function() {
+			if ($.trim( $("#id").val()) == "") {
+				alert("아이디를 입력해주세요.");
+				return false;
+			}// 아이디 적지 않고 중복체크 버튼 누름
+			$.get(
+				"./idChk"
+				,{id:$("#id").val()}
+				,function(data,status){
+					if (data == 0) {
+						$("#id_desc").text("사용 가능한 아이디입니다.");
+						$("#id_desc").css({
+							padding:"12px 0 19px 0",
+						 	"text-align": "right",
+						  	color: "#9a9a9a",
+						  	"font-size": "13px",
+						 	"border-bottom": "1px solid #ececec"
+						});
+						$("#id_desc").focus();
+						ck = 1;
+					}else {
+						$("#id_desc").text("이미 사용 중인 아이디 입니다.");
+						$("#id_desc").css({
+							padding:"12px 0 19px 0",
+						 	"text-align": "right",
+						  	color: "red",
+						  	"font-size": "13px",
+						 	"border-bottom": "1px solid #ececec"
+						});
+						$("#id_desc").focus();
+					}
+				}//function
+			);//get : 아이디 중복체크
+		});//click : btn_idChk
+		
+		$("#id").keydown(function() {
+			ck = 0;
+		});//keydown
+		$(".id").keyup(function() {
+			let tmpElement = event.target;
+			let tmpValue = tmpElement.value;
+			tmpElement.value
+			=tmpValue.replace(/[^ A-Z a-z 0-9 \.]/g, '');
+		});//keyup: 키 입력 후 발생 이벤트: 알파벳, 숫자만 입력 가능
+		$(".tel").keyup(function() {
+			let tmpElement = event.target;
+			let tmpValue = tmpElement.value;
+			tmpElement.value = tmpValue.replace(/[^ 0-9\.]/g,'');
+		});//keyup: 키 입력 후 발생 이벤트 : 숫자만 입력가능
+		
+		$("#btn_join").click(function() {
+			if($.trim( $("#id").val() ) == ""){
+				alert("아이디를 입력해 주세요.");
+				return;
+			}
+			if($.trim( $("#pwd").val() ) == ""){
+				alert("비밀번호를 입력해 주세요");
+				return;
+			}
+			if($.trim( $("#pwdre").val() ) == ""){
+				alert("비밀번호 확인을 입력해주세요.");
+				return;
+			}
+			if ($("#pwd").val() != $("#pwdre").val() ) {
+				alert("비밀번호와 비밀번호 확인이 서로 다릅니다.\n 비밀번호를 확인해 주세요.");
+			}
+			if ($.trim( $("#name").val() ) == "") {
+				alert("이름을 입력해주세요.");
+				return;
+			}
+			if ($.trim( $("#email1").val()) ==""
+					||$.trim($("#email2").val()) =="") {
+				alert("이메일을 확인해주세요.");
+			}
+			if ($.trim($("#tel1").val()) == "" 
+					||$.trim($("#tel2").val()) == ""
+					||$.trim($("#tel3").val()) == "") {
+				alert("휴대폰 번호를 확인해주세요.");
+				return;
+			}
+			if (ck == 0) {
+				alert("아이디 중복 여부를 확인해 주세요.");
+				return false;
+			}
+		
+		$.ajax({
+			type:"POST"
+			,url:"./join"
+			,dataType:"JSON"
+			,data: {id:$("#id").val()
+				,pwd:$("#pwd").val()
+				,name:$("#name").val()
+				,gender:$('input:radio[name=mb_gen]:checked').val()
+				,email:email
+				,tel:tel
+				,weight:$("#weh").val()
+				,height:$("#hei").val()
+				}
+			,success : function(data) {
+				if (data == "1") {
+					alert("회원가입을 축하드립니다.");
+					location.href = "${root}/";//회원가입 성공시 홈화면으로 돌아감
+				}else if (data == "-1") {
+					alert("회원가입을 다시 시도해 주세요.")
+				}
+			}//success
+			,error: function(xhr, status, error) {
+			}//error
+			
+		});//ajax	
+		});
+			
+	});//click
+</script>
 <body>
 	<div class="wrap wd668">
 		<div class="container">
@@ -26,20 +149,25 @@
 						</colgroup>
 						<tbody>
 							<tr>
-								<th><span class="essential">아이디</span></th>
-								<td><input type="text" placeholder="ID 를 입력하세요."></td>
-							</tr>
-							<tr>
-								<th><span class="essential">이름</span></th>
-								<td><input type="text" placeholder=""></td>
+								<th><span class="essential">아이디</span><span id="id_desc"></span></th>
+								<td><input class="id" id="id" type="text" placeholder="ID 를 입력하세요.">
+								<div class="btn_idChk" id= "btn_idChk">
+								<a href="#">중복확인</a>
+								</div>
+								</td>
+								
 							</tr>
 							<tr>
 								<th><span class="essential">비밀번호</span></th>
-								<td><input type="text" placeholder="비밀번호를 입력해주세요."></td>
+								<td><input id="pwd" type="text" placeholder="비밀번호를 입력해주세요."></td>
 							</tr>
 							<tr>
 								<th><span class="essential">비밀번호 확인</span></th>
-								<td><input type="text" placeholder="비밀번호를 확인하세요"></td>
+								<td><input id="pwdre" type="text" placeholder="비밀번호를 확인하세요"></td>
+							</tr>
+							<tr>
+								<th><span class="essential">이름</span></th>
+								<td><input id="name" type="text" placeholder=""></td>
 							</tr>
 							<tr>
 								<th><span>성별</span></th>
@@ -61,9 +189,9 @@
 							<tr class="email">
 								<th><span class="essential">이메일</span></th>
 								<td>
-								<input type="text" class="email">
+								<input type="text" class="email" id="email1">
 								<span class="mar10">@</span> 
-								<input type="text" class="email email2"></td>
+								<input type="text" class="email email2" id="email2"></td>
 							</tr>
 							<tr class="tel">
 								<th><span class="essential">휴대폰 번호</span></th>
@@ -105,9 +233,9 @@
 									수신동의</label>
 							</div>
 						</div>-->
-				<div class="btn_wrap">
-					<a href="javascript:;">회원가입</a>
-				</div>
+				<button class="btn_wrap" id= "btn_join">
+					회원가입
+				</button>
 			</div>
 			<!-- form_txtInput E -->
 		</div>
