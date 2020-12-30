@@ -1,0 +1,44 @@
+@charset "UTF-8";
+.sheet {
+	max-width: 1400;
+	margin: 0 auto;
+}
+.headerbox{
+	width:100%;
+	height : 120px;
+	border-bottom: 1px solid #8c8c8c;
+}
+.logo {
+	float: left;
+	margin-right: 150px;
+	margin-top: 20px;
+	}
+ul li{
+	list-style: none;
+	padding: 30px;
+	display: flex;
+	flex-direction:column-reverse;
+	float: left;
+}
+.category{
+	
+	float: left;
+ }
+.register{float: right;}
+
+a{
+	text-decoration: none;
+	font-family: 'Montserrat', sans-serif;
+	font-family: 'Staatliches', cursive;
+	font-weight: 500;
+	color: black;
+	font-size: 22px;
+	}
+a:hover{
+	text-decoration: none;
+	font-family: 'Montserrat', sans-serif;
+	font-family: 'Staatliches', cursive;
+	font-weight: 500;
+	color: #fa8d97;
+	font-size: 22px;
+	}

@@ -1,34 +1,30 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<c:set var="root" value="${pageContext.request.contextPath}"/>
-<%@ page session="false" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="root" value="${pageContext.request.contextPath}" />
+<%@ page session="false"%>
 <html>
 <head>
-	<title>Home</title>
-	<meta charset="UTF-8">
-	<style type="text/css">
-	.container { max-width:1200; margin:0 auto; }
-	.pTitle {height: 100px; background-color: salmon; }
-	ul li {
-		list-style: none;
-		float: right;
-		padding: 5px;
-	}
-	a{text-decoration: none;}
-	</style>
+<title>Home</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet"href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="${root}/resources/css/homeheader.css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Staatliches&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<style type="text/css">
+
+</style>
 </head>
 <body>
-<div class="container">
-	<nav>
-		<ul>
-			<li><a href="#">로그인</a></li>
-			<li><a href="${root}/jform">회원가입</a></li>
-		</ul>
-	</nav>
-	<div class="pTitle">
-		<h1>Hello world!</h1>
-		<P>  The time on the server is ${serverTime}. </P>
-	</div><!-- pTitle -->
-</div><!-- container -->
+	<div class="sheet">
+
+
+		<%@ include file="./homeheader.jsp"%>
+	</div>
+	<!-- container -->
 </body>
 </html>

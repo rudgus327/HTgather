@@ -15,6 +15,9 @@
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/jform.css">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="${root}/resources/css/homeheader.css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Staatliches&display=swap" rel="stylesheet">
 </head>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -138,6 +141,9 @@
 	});//ready
 </script>
 <body>
+	<div class="sheet">
+		<%@ include file="../homeheader.jsp"%>
+	</div>
 	<div class="wrap wd668">
 		<div class="container">
 			<div class="form_txtInput">
