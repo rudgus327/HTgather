@@ -21,7 +21,7 @@ public class JoinController {
 	@RequestMapping(value = "/jform", method = RequestMethod.GET)
 	public String jform() {
 		return "join/jform";
-	}//jform
+	}//jform : 회원가입페이지
 	
 	@ResponseBody
 	@RequestMapping(value = "/idChk", method=RequestMethod.GET)
@@ -42,6 +42,10 @@ public class JoinController {
 		}
 	}//register : 회원가입
 	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login() {
+		return "join/login_form";
+	}//jform : 로그인페이지
 	
 	
 	

@@ -26,13 +26,11 @@
 			<c:choose>
 				<c:when test="">
 					<li class="header"><a href="${root}/jform">MY PAGE</a></li>
-					<li class="header"><a href="${root}/inout/out">LOGOUT</a></li>
+					<li class="header"><a href="${root}/logout">LOGOUT</a></li>
 				</c:when>
 				<c:otherwise>
 					<li class="header"><a href="${root}/jform">JOIN</a></li>
-					<li class="header"><a data-toggle="modal"
-					data-target="login_modal" 
-					href="${root}/inout/in">LOGIN</a></li>
+					<li class="header "><a href="${root}/login">LOGIN</a></li>
 				</c:otherwise>
 			</c:choose>
 		</ul>

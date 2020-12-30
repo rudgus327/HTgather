@@ -10,9 +10,6 @@ table, tr, td, th, div, p, em, ol, ul, li, dl, dt, dd, a, address, img,
 	text-decoration: none;
 }
 
-img {
-	border: 0;
-}
 
 h1 {
 	float: left;

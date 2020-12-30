@@ -17,7 +17,21 @@
 		,CONCAT(#{tel1},'-',#{tel2},'-',#{tel3})
 		,#{weight},#{height})
 	</insert>
+	<select id="pwdChk" parameterType="kr.co.htgather.join.MbrDTO" 
+	resultType = "int" >
+		select count(mbr_id) cnt
+		from mbr 
+		where mbr_id = #{mbr_id}
+		and mbr_pwd = #{mbr_pwd}
+	</select>
 	
+	<select id="login" parameterType="kr.co.htgather.join.MbrDTO" 
+	resultType = "int" >
+		select mbr_id
+		from mbr 
+		where mbr_id = #{mbr_id}
+		and mbr_pwd = #{mbr_pwd}
+	</select>
 </mapper>
 
 

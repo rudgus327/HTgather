@@ -20,5 +20,17 @@ public class joinDAO {
 			= sqlsession.insert("JoinMapper.register", inDto);
 		return successCnt;
 	}//register : 회원가입
+
+	public int pwdChk(MbrDTO inDto) {
+		int pwdChk
+			= sqlsession.selectOne("JoinMapper.pwdChk", inDto);
+		return pwdChk;
+	}
+
+	public int login(MbrDTO inDto) {
+		int mbrNo 
+			= sqlsession.selectOne("JoinMapper.login", inDto);
+		return mbrNo;
+	}
 	
 }//class
