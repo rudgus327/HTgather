@@ -13,10 +13,10 @@
 	<div class="category"><!-- category -->
 		<nav>
 			<ul>
-				<li><a href="#">ABOUT US</a></li>
-				<li><a href="#">DIARY</a></li>
-				<li><a href="#">TIPS</a></li>
-				<li><a href="#">BOARD</a></li>
+				<li class="header"><a href="#">ABOUT US</a></li>
+				<li class="header"><a href="#">DIARY</a></li>
+				<li class="header"><a href="#">TIPS</a></li>
+				<li class="header"><a href="#">BOARD</a></li>
 			</ul>
 		</nav>
 	</div><!-- category -->
@@ -25,12 +25,12 @@
 		<ul>
 			<c:choose>
 				<c:when test="">
-					<li><a href="${root}/jform">MY PAGE</a></li>
-					<li><a href="${root}/inout/out">LOGOUT</a></li>
+					<li class="header"><a href="${root}/jform">MY PAGE</a></li>
+					<li class="header"><a href="${root}/inout/out">LOGOUT</a></li>
 				</c:when>
 				<c:otherwise>
-					<li><a href="${root}/jform">JOIN</a></li>
-					<li><a data-toggle="modal"
+					<li class="header"><a href="${root}/jform">JOIN</a></li>
+					<li class="header"><a data-toggle="modal"
 					data-target="login_modal" 
 					href="${root}/inout/in">LOGIN</a></li>
 				</c:otherwise>

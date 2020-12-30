@@ -21,8 +21,6 @@
 </head>
 <body>
 	<div class="sheet">
-
-
 		<%@ include file="./homeheader.jsp"%>
 	</div>
 	<!-- container -->
