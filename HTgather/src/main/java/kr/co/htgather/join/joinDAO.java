@@ -13,7 +13,7 @@ public class joinDAO {
 	public int idChk(String mbr_id) {
 		int idCount = sqlsession.selectOne("JoinMapper.idChk", mbr_id);
 		return idCount;
-	}//idCheck : 아이디 중복체크
+	}//idCheck : 아이디 중복체크 회원가입
 
 	public int register(MbrDTO inDto) {
 		int successCnt 
@@ -21,16 +21,16 @@ public class joinDAO {
 		return successCnt;
 	}//register : 회원가입
 
-	public int pwdChk(MbrDTO inDto) {
-		int pwdChk
-			= sqlsession.selectOne("JoinMapper.pwdChk", inDto);
-		return pwdChk;
+	public int pwdCheck(MbrDTO indto) {
+		int pwdYn = sqlsession.selectOne("JoinMapper.pwdCheck", indto);
+		return pwdYn;
 	}
 
-	public int login(MbrDTO inDto) {
-		int mbrNo 
-			= sqlsession.selectOne("JoinMapper.login", inDto);
+	public int login(MbrDTO indto) {
+		int mbrNo = sqlsession.selectOne("JoinMapper.login", indto);
 		return mbrNo;
 	}
+
+
 	
 }//class

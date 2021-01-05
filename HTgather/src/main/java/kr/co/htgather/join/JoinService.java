@@ -19,17 +19,20 @@ public class JoinService {
 		return successCnt;
 	}//register : 회원가입
 
-	public int login(MbrDTO inDto) {
-		int idYN = dao.idChk(inDto.getMbr_id());
+	public int login(MbrDTO indto) {
+		int idYN = dao.idChk(indto.getMbr_id());
 		if (idYN != 1) {
 			return -1;
 		}
-		int pwdYN =dao.pwdChk(inDto);
+		int pwdYN = dao.pwdCheck(indto);
 		if (pwdYN == 0) {
 			return -2;
 		}
-		int mbrNo = dao.login(inDto); 
+		int mbrNo = dao.login(indto);
 		return mbrNo;
+			
 	}
+
+
 	
 }

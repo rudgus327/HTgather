@@ -1,6 +1,8 @@
 package kr.co.htgather.join;
 
 public class MbrDTO {
+
+	private String mno;
 	private String mbr_id; 
 	private String mbr_pwd; 
 	private String mbr_name; 
@@ -17,6 +19,13 @@ public class MbrDTO {
 	private String height; 
 	private String joinDate;
 	
+
+	public String getMno() {
+		return mno;
+	}
+	public void setMno(String mno) {
+		this.mno = mno;
+	}
 	public String getEmail1() {
 		return email1;
 	}

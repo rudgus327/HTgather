@@ -1,5 +1,6 @@
 create table mbr(
-mbr_id varchar(20) primary key 
+mno int primary key auto_increment
+,mbr_id varchar(20)  
 ,mbr_pwd varchar(20) 
 ,mnr_name varchar(20) 
 ,gender varchar(20)
@@ -12,27 +13,27 @@ mbr_id varchar(20) primary key
 );
 create table diary(
 dr_num int primary key auto_increment
-,mbr_id varchar(20)
+,mno int
 ,dr_title varchar(100) 
 ,dr_cnts varchar(500) 
 ,dr_like int
 ,dr_view int
 ,dr_pic varchar(200)
 ,dr_writeDate datetime
-,foreign key(mbr_id) references mbr(mbr_id)
+,foreign key(mno) references mbr(mno)
 );
 create table drReply(
 drp_num int primary key auto_increment
-,mbr_id varchar(20)
+,mno int
 ,dr_num int
 ,drp_cnts varchar(200)
 ,drp_date datetime
-,foreign key(mbr_id) references mbr(mbr_id)
+,foreign key(mno) references mbr(mno)
 ,foreign key(dr_num) references diary(dr_num)
 );
 create table tips(
 t_num int primary key auto_increment
-,mbr_id varchar(20)
+,mno int
 ,t_title varchar(100)
 ,t_cnts varchar(800)
 ,t_like int
@@ -40,21 +41,21 @@ t_num int primary key auto_increment
 ,t_scrap int
 ,t_pic varchar(200)
 ,t_writeDate datetime
-,foreign key(mbr_id) references mbr(mbr_id)
+,foreign key(mno) references mbr(mno)
 );
 create table tReply(
 trp_num int primary key auto_increment
-,mbr_id varchar(20)
+,mno int
 ,t_num int
 ,t_cnts varchar(200)
 ,trp_date datetime
-,foreign key(mbr_id) references mbr(mbr_id)
+,foreign key(mno) references mbr(mno)
 ,foreign key(t_num) references tips(t_num)
 );
 create table scrap(
 scrap_num int primary key
-,mbr_id varchar(20)
+,mno int
 ,t_num int
-,foreign key(mbr_id) references mbr(mbr_id)
+,foreign key(mno) references mbr(mno)
 ,foreign key(t_num) references tips(t_num)
 );
