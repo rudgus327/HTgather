@@ -16,8 +16,13 @@
 			<ul>
 				<li class="header"><a href="#">ABOUT US</a></li>
 				<li class="header"><a href="#">DIARY</a></li>
+<<<<<<< main
 				<li class="header"><a href="#">test</a></li>
 				<li class="header"><a href="#">test2</a></li>
+=======
+				<li class="header"><a href="#">TIPS</a></li>
+				<li class="header"><a href="#">BOARD</a></li>
+>>>>>>> 9c2799c author test
 			</ul>
 		</nav>
 	</div><!-- category -->
