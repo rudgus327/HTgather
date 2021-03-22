@@ -16,7 +16,7 @@
 			<ul>
 				<li class="header"><a href="#">ABOUT US</a></li>
 				<li class="header"><a href="#">DIARY</a></li>
-				<li class="header"><a href="#">TIPS</a></li>
+				<li class="header"><a href="#">test</a></li>
 				<li class="header"><a href="#">BOARD</a></li>
 			</ul>
 		</nav>
